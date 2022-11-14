@@ -1,12 +1,11 @@
 pipeline {
-	agent any
+	agent {
+		docker {
+			image: "composer:latest"
+		}
+	}
 	stages {
 		stage('Build') {
-			agent{
-				docker {
-					image 'composer:latest'
-				}
-			}
 			steps {
 				sh 'composer install'
 			}
